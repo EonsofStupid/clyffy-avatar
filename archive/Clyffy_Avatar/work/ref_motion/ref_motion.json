@@ -1,0 +1,133 @@
+{
+  "source": "<local-uploads>",
+  "shots": {
+    "isolated_performance": {
+      "clip": "6f675283",
+      "use": "B1 head sway + B2 ear lag \u2014 one character on black, 8 s continuous take",
+      "frames": 192,
+      "duration_s": 8.0,
+      "tracked_pct": 100.0,
+      "crop": null,
+      "method": "silhouette",
+      "frame_range": [
+        0,
+        192
+      ],
+      "pad_width_px_median": 349.0,
+      "ruler_stability_pct": 6.9,
+      "variation_pct": {
+        "pad_height": 6.9,
+        "pad_width": 6.9,
+        "pad_area": 69.3,
+        "nostril_area": 0.0
+      },
+      "head_translation_padwidths": {
+        "x_p2p": 0.479,
+        "y_p2p": 0.069,
+        "x_dominant_hz": 0.25,
+        "y_dominant_hz": 0.25
+      },
+      "aperture": {
+        "rise_fall": null,
+        "hold": {
+          "median_ms": 7958.333333333333,
+          "p90_ms": 7958.333333333333,
+          "max_ms": 7958.333333333333,
+          "n": 1
+        }
+      },
+      "pad_height_dynamics": {
+        "rise_fall": {
+          "rise_ms": 1104.1666666666665,
+          "fall_ms": 1708.3333333333333,
+          "n_rise": 2,
+          "n_fall": 1
+        },
+        "hold": {
+          "median_ms": 41.666666666666664,
+          "p90_ms": 225.00000000000009,
+          "max_ms": 708.3333333333334,
+          "n": 33
+        }
+      },
+      "ear_frames": 192,
+      "ear_arm_rejected": 20,
+      "ear_amplitude_bodyheights": {
+        "left_rms": 0.0554,
+        "right_rms": 0.0547,
+        "left_p2p": 0.3713,
+        "right_p2p": 0.2139
+      },
+      "ear_extent_padwidths": {
+        "left_p2p": 129.573,
+        "right_p2p": 74.666
+      },
+      "ear_lag": {
+        "frames": 4,
+        "ms": 166.7,
+        "corr": 0.087
+      }
+    },
+    "muzzle_closeup": {
+      "clip": "48a464a0",
+      "use": "pad deformation \u2014 the snout filling frame, heavy mouth motion",
+      "frames": 40,
+      "duration_s": 1.67,
+      "tracked_pct": 100.0,
+      "crop": [
+        520,
+        470,
+        1330,
+        900
+      ],
+      "method": "crop",
+      "frame_range": [
+        206,
+        246
+      ],
+      "pad_width_px_median": 512.0,
+      "ruler_stability_pct": 3.1,
+      "variation_pct": {
+        "pad_height": 24.0,
+        "pad_width": 3.1,
+        "pad_area": 42.1,
+        "nostril_area": 42.9
+      },
+      "head_translation_padwidths": {
+        "x_p2p": 0.045,
+        "y_p2p": 0.125,
+        "x_dominant_hz": 0.6,
+        "y_dominant_hz": 0.6
+      },
+      "aperture": {
+        "rise_fall": {
+          "rise_ms": 500.0,
+          "fall_ms": null,
+          "n_rise": 1,
+          "n_fall": 0
+        },
+        "hold": {
+          "median_ms": 62.5,
+          "p90_ms": 187.5,
+          "max_ms": 250.0,
+          "n": 6
+        }
+      },
+      "pad_height_dynamics": {
+        "rise_fall": {
+          "rise_ms": 708.3333333333334,
+          "fall_ms": null,
+          "n_rise": 1,
+          "n_fall": 0
+        },
+        "hold": {
+          "median_ms": 62.5,
+          "p90_ms": 229.16666666666666,
+          "max_ms": 375.0,
+          "n": 6
+        }
+      },
+      "ear_frames": 0
+    }
+  }
+}

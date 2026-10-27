@@ -1,0 +1,22 @@
+# Deliberately its OWN workspace (see the empty `[workspace]` below) and excluded from the
+# clyffy root workspace. The Tauri shell pulls ~500 crates (wry, tao, webkit/gtk bindings);
+# making it a member would put that on every root `cargo check` for a leaf nothing depends on.
+[workspace]
+
+[package]
+name = "clyffy-avatar-shell"
+version = "0.1.0"
+edition = "2021"
+description = "Desktop shell for the clyffy live face — transparent, always-on-top, bottom-right."
+publish = false
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+strip = true

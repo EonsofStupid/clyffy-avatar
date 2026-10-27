@@ -1,0 +1,22 @@
+{"seq": 1, "t": 1786382291.406, "kind": "stream_on", "obj": "clyffy_mesh", "verts": 15871}
+{"seq": 2, "t": 1786382357.828, "kind": "mesh_changed", "verts_moved": 393, "max_move": 0.10031, "at": [-0.0407, 0.0749, 0.6493], "op": null}
+{"seq": 3, "t": 1786382617.993, "kind": "operator", "op": "VIEW3D_OT_select_box"}
+{"seq": 4, "t": 1786382688.022, "kind": "saved"}
+{"seq": 5, "t": 1786382716.563, "kind": "mesh_rebuilt", "verts": 15635, "was": 15871, "op": "VIEW3D_OT_select_box"}
+{"seq": 1, "t": 1786388820.139, "kind": "stream_on", "obj": "clyffy_mesh", "verts": 15871}
+{"seq": 2, "t": 1786388834.976, "kind": "mesh_changed", "verts_moved": 28, "max_move": 0.00054, "at": [0.0133, -0.2244, 0.7027], "op": null}
+{"seq": 3, "t": 1786388850.364, "kind": "mode", "value": "EDIT"}
+{"seq": 4, "t": 1786388850.365, "kind": "operator", "op": "OBJECT_OT_editmode_toggle"}
+{"seq": 1, "t": 1786717778.555, "kind": "stream_on", "obj": "clyffy_mesh", "verts": 15871}
+{"seq": 2, "t": 1786717812.743, "kind": "operator", "op": "VIEW3D_OT_select"}
+{"seq": 3, "t": 1786717859.989, "kind": "saved"}
+{"seq": 4, "t": 1786717886.339, "kind": "mesh_rebuilt", "verts": 15931, "was": 15871, "op": "VIEW3D_OT_select"}
+{"seq": 5, "t": 1786717886.375, "kind": "saved"}
+{"seq": 6, "t": 1786718369.92, "kind": "saved"}
+{"seq": 7, "t": 1786808641.676, "kind": "saved"}
+{"seq": 8, "t": 1786808654.199, "kind": "saved"}
+{"seq": 9, "t": 1786808675.866, "kind": "mesh_rebuilt", "verts": 16011, "was": 15931, "op": "VIEW3D_OT_select"}
+{"seq": 10, "t": 1786808696.155, "kind": "saved"}
+{"seq": 11, "t": 1786812211.263, "kind": "saved"}
+{"seq": 12, "t": 1786812219.468, "kind": "saved"}
+{"seq": 13, "t": 1786812245.491, "kind": "mesh_changed", "verts_moved": 274, "max_move": 0.01108, "at": [0.0936, 0.2415, 0.1252], "op": null}

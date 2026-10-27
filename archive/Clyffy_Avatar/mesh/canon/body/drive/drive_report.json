@@ -1,0 +1,19 @@
+{
+  "label": "C_mark_zane_mono.wav",
+  "seconds": 11.4915,
+  "frames": 275,
+  "fps": 24,
+  "max_jaw_deg": 10.0,
+  "rest_hold_frames": 9,
+  "visemes_used": [
+    "E",
+    "O",
+    "aa",
+    "nn",
+    "sil"
+  ],
+  "contract": "control_surface v1",
+  "drive_frames": "drive_frames.jsonl",
+  "source": "C_mark_zane_mono.wav",
+  "audio_muxed": true
+}

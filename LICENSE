@@ -1,0 +1,18 @@
+Clyffy Avatar — licensing overview
+
+This repository is dual-licensed by content type:
+
+1. CODE — everything that is source code, scripts, build files and configuration
+   (for example tools/, archive/Clyffy_Avatar/tools/, interfaces/, scripts/, install.sh,
+   Dockerfile, compose files, *.toml, *.json schemas) is licensed under the Apache License,
+   Version 2.0. See LICENSE-CODE.
+
+2. ART AND CHARACTER — the Clyffy character, its likeness and name, and all art assets
+   (*.blend, *.vrm, *.glb, *.fbx, textures and images under reference/, sheets/, mesh/,
+   work/ and archive/Clyffy_Avatar/mesh/, and character/show documentation) are NOT covered
+   by the code license. Their terms are in ART_LICENSE.md: all rights reserved by
+   AngryVibes_LLC, with public release and unmodified redistribution cleared on 2026-10-27.
+
+Third-party components are fetched at build time and keep their own licenses
+(Blender: GPL-2.0-or-later; VRM Add-on for Blender: MIT or GPL-3.0; three.js and
+@pixiv/three-vrm: MIT; Python packages: see their distributions). See ASSETS_PROVENANCE.md.

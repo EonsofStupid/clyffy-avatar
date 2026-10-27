@@ -1,0 +1,12 @@
+{
+  "expression_state": "thinking",
+  "viseme_weights": {
+    "mouthPressLeft": 0.2,
+    "mouthPressRight": 0.2
+  },
+  "gaze_target": {
+    "yaw_deg": 12.0,
+    "pitch_deg": -6.0
+  },
+  "goggle_state": "on-face"
+}

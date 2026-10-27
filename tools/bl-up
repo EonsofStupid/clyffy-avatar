@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Ensure the live Blender session is running. Idempotent — safe to call before any bl command.
+#   tools/bl-up            start if down, report either way
+#   tools/bl-up --restart  kill and start fresh (after editing blkit.py)
+SOCK=${CLYFFY_BL_SOCK:-/tmp/clyffy_blender.sock}
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+BLEND="${2:-$ROOT/work/RETOPO_clyffy.blend}"
+# Match the BLENDER process, not anything that merely mentions the daemon — the first version
+# used `pkill -f blender_daemon.py` and killed the shell that was running this script.
+if [ "$1" = "--restart" ]; then
+  for pid in $(pgrep -x blender); do
+    tr '\0' ' ' < /proc/$pid/cmdline 2>/dev/null | grep -q blender_daemon && kill "$pid"
+  done
+  rm -f "$SOCK"; sleep 2
+fi
+if [ -S "$SOCK" ] && "$ROOT/tools/bl" 'result="up"' >/dev/null 2>&1; then
+  echo "live session already up ($SOCK)"; exit 0
+fi
+rm -f "$SOCK"
+( DISPLAY=${DISPLAY:-:0} nohup blender "$BLEND" --python "$ROOT/tools/blender_daemon.py" \
+    > /tmp/clyffy_bl.log 2>&1 & )
+for i in $(seq 1 60); do [ -S "$SOCK" ] && break; sleep 1; done
+if [ -S "$SOCK" ]; then echo "live session up ($SOCK) on $BLEND"; else
+  echo "FAILED to start; tail of /tmp/clyffy_bl.log:"; tail -20 /tmp/clyffy_bl.log; exit 1; fi

@@ -1,0 +1,135 @@
+{
+  "bones": [
+    "hips",
+    "spine",
+    "chest",
+    "neck",
+    "skull",
+    "jaw",
+    "eye_L",
+    "eye_R",
+    "ear_L",
+    "ear_L_2",
+    "ear_L_3",
+    "ear_R",
+    "ear_R_2",
+    "ear_R_3",
+    "shoulder_L",
+    "upper_arm_L",
+    "lower_arm_L",
+    "hand_L",
+    "shoulder_R",
+    "upper_arm_R",
+    "lower_arm_R",
+    "hand_R",
+    "upper_leg_L",
+    "lower_leg_L",
+    "foot_L",
+    "upper_leg_R",
+    "lower_leg_R",
+    "foot_R",
+    "tail",
+    "tail_2",
+    "tail_3",
+    "tail_4"
+  ],
+  "n_verts": 47184,
+  "shape_keys": [
+    "Basis",
+    "eyeBlinkLeft",
+    "eyeBlinkRight",
+    "eyeSquintLeft",
+    "eyeSquintRight",
+    "eyeWideLeft",
+    "eyeWideRight",
+    "browDownLeft",
+    "browDownRight",
+    "browOuterUpLeft",
+    "browOuterUpRight",
+    "browInnerUp",
+    "jawForward",
+    "jawLeft",
+    "jawRight",
+    "mouthSmileLeft",
+    "mouthSmileRight",
+    "mouthFrownLeft",
+    "mouthFrownRight",
+    "mouthStretchLeft",
+    "mouthStretchRight",
+    "mouthDimpleLeft",
+    "mouthDimpleRight",
+    "mouthUpperUpLeft",
+    "mouthUpperUpRight",
+    "mouthLowerDownLeft",
+    "mouthLowerDownRight",
+    "mouthPressLeft",
+    "mouthPressRight",
+    "mouthPucker",
+    "mouthFunnel",
+    "mouthRollUpper",
+    "mouthRollLower",
+    "mouthShrugUpper",
+    "mouthShrugLower",
+    "mouthClose",
+    "mouthLeft",
+    "mouthRight",
+    "cheekPuff",
+    "cheekSquintLeft",
+    "cheekSquintRight",
+    "noseSneerLeft",
+    "noseSneerRight",
+    "tongueOut"
+  ],
+  "tests": [
+    {
+      "pose": "upper_arm_L raise -55x",
+      "moved": 1503,
+      "max": 0.12791891579413348,
+      "max_pctH": 13.074929332659085
+    },
+    {
+      "pose": "upper_arm_R raise -55x",
+      "moved": 1542,
+      "max": 0.12224668738261239,
+      "max_pctH": 12.495155925583818
+    },
+    {
+      "pose": "spine+chest bend",
+      "moved": 47173,
+      "max": 0.1334052386675735,
+      "max_pctH": 13.63570084499604,
+      "skull_disp_std": 0.017873978812413035,
+      "skull_disp_mean": 0.09979537864841337
+    },
+    {
+      "pose": "jaw 22deg",
+      "moved": 3599,
+      "max": 0.08993301515433974,
+      "max_pctH": 9.192290370161794
+    },
+    {
+      "pose": "eyes look +16z",
+      "moved": 982,
+      "max": 0.014917485357087893,
+      "max_pctH": 1.524755472277431
+    }
+  ],
+  "spring_chains": {
+    "ear_L": [
+      "ear_L",
+      "ear_L_2",
+      "ear_L_3"
+    ],
+    "ear_R": [
+      "ear_R",
+      "ear_R_2",
+      "ear_R_3"
+    ],
+    "tail": [
+      "tail",
+      "tail_2",
+      "tail_3",
+      "tail_4"
+    ]
+  }
+}

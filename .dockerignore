@@ -1,0 +1,21 @@
+# The image is self-contained: code AND the LFS art are baked in (the `check` stage fails the
+# build if an LFS pointer, a symlink or a host path slipped into the context).
+.git
+.github
+.env
+.env.*
+!.env.example
+**/__pycache__
+**/node_modules
+**/dist
+**/target
+out/
+# work/ is scratch; only the committed live-session files go into the image
+work/*
+!work/RETOPO_clyffy.blend
+!work/bl_journal.jsonl
+!work/bl_events.jsonl
+archive/Clyffy_Avatar/work/voice/models/
+**/*.gguf
+**/*.blend1
+**/*.log

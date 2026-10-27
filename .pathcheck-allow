@@ -1,0 +1,10 @@
+# Lines that only DESCRIBE a path (history / third-party data); format: <file><TAB><fixed substring>
+ASSETS_PROVENANCE.md	the `/mnt/pfs/...` paths in the file are Tripo's
+BUILD_LOG.md	`Projects/archive/Clyffy_Avatar/canon/` **exists**
+archive/Clyffy_Avatar/BUILD_LOG.md	the `/mnt/pfs/...` paths in the file are Tripo's
+archive/Clyffy_Avatar/BUILD_LOG.md	`~/.config/blender/4.0/scripts/addons/VRM_Addon_for_Blender-release`
+archive/Clyffy_Avatar/BUILD_LOG.md	* Install root: `/opt/blender-5.2.0/`
+archive/Clyffy_Avatar/BUILD_LOG.md	`/opt/blender-5.2.0/blender-wrapper.sh`
+archive/Clyffy_Avatar/BUILD_LOG.md	* VRM addon linked into `~/.config/blender/5.2/scripts/addons/`
+ASSETS_PROVENANCE.md	contain Tripo's own server texture paths
+README.md	(`/home/<user>`, `/Users/…`, `~/…`, `/mnt/…`

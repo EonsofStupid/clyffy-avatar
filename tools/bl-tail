@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Watch the live Blender event stream — the same signals the agent sees, in your own terminal.
+#   tools/bl-tail        follow from now
+#   tools/bl-tail -a     replay everything, then follow
+# Every line is one thing that happened INSIDE Blender, your own mouse strokes included.
+set -euo pipefail
+DIR="$(cd "$(dirname "$0")" && pwd)"
+F="$DIR/../work/bl_events.jsonl"
+[ -f "$F" ] || { echo "no stream yet — run: tools/bl 'result=stream_on()'" >&2; exit 1; }
+if [ "${1:-}" = "-a" ]; then FROM="+1"; else FROM="0"; fi
+exec tail -n "$FROM" -F "$F" | exec python3 -u "$DIR/_bl_tail_fmt.py"

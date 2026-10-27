@@ -1,0 +1,89 @@
+# Clyffy avatar — everything runs from this checkout; nothing is mounted from the host.
+#
+#   cp .env.example .env            # optional; every value has a default
+#   docker compose up -d --build    # renderer UI + one render worker
+#   docker compose up -d --scale worker=3
+#   docker compose run --rm worker submit --wait          # queue a render, wait for the PNG
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d   # NVIDIA GPU
+#   docker compose --profile tts run --rm fetch-models    # optional local TTS models
+#
+# State lives only in named volumes (jobs, out, cache, models); containers are disposable.
+name: ${COMPOSE_PROJECT_NAME:-clyffy-avatar}
+
+x-build-args: &build-args
+  BASE_IMAGE: ${BASE_IMAGE:-docker.io/library/ubuntu:24.04@sha256:24737cef17f4e22b1977df7d9a05e77c4e28b7da5b8911f8d8ccda136bf3573c}
+  BLENDER_VERSION: ${BLENDER_VERSION:-5.2.0}
+  BLENDER_SERIES: ${BLENDER_SERIES:-5.2}
+  BLENDER_X64_SHA256: ${BLENDER_X64_SHA256:-96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48}
+  VRM_ADDON_VERSION: ${VRM_ADDON_VERSION:-4.4.0}
+  VRM_ADDON_SHA256: ${VRM_ADDON_SHA256:-83facc17c8ed2b3e450fef15bd11110946bd610c6ff7a01330b025a71de6788d}
+
+x-runtime: &runtime
+  image: ${CLYFFY_IMAGE:-clyffy-avatar:local}
+  build:
+    context: .
+    target: runtime
+    args: *build-args
+  init: false            # the image already runs tini
+  environment:
+    CLYFFY_CYCLES_DEVICE: ${CLYFFY_CYCLES_DEVICE:-CPU}
+    CLYFFY_RES: ${CLYFFY_RES:-768x768}
+    CLYFFY_SAMPLES: ${CLYFFY_SAMPLES:-32}
+    CLYFFY_ENGINE: ${CLYFFY_RENDER_ENGINE:-CYCLES}
+    CLYFFY_WORKER_POLL: ${CLYFFY_WORKER_POLL:-2}
+  volumes:
+    - jobs:/data/jobs
+    - out:/data/out
+    - cache:/data/cache
+    - models:/data/models
+
+services:
+  # Stateless render workers: scale freely (no ports, no container_name).
+  worker:
+    <<: *runtime
+    command: ["worker"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/clyffy/scripts/healthcheck.sh", "--worker"]
+      interval: 30s
+      timeout: 60s
+      start_period: 60s
+      retries: 3
+
+  # Live three-vrm face UI (static). http://127.0.0.1:5273/  (?daemon=URL for a clyffyd SSE feed)
+  renderer:
+    image: ${CLYFFY_RENDERER_IMAGE:-clyffy-avatar-renderer:local}
+    build:
+      context: .
+      target: renderer
+      args: *build-args
+    ports:
+      - "${CLYFFY_RENDERER_BIND:-127.0.0.1}:${CLYFFY_RENDERER_PORT:-5273}:8080"
+    read_only: true
+    tmpfs: [/tmp]
+    restart: unless-stopped
+
+  # One-shot: download + sha256-verify the optional TTS models into the models volume.
+  fetch-models:
+    <<: *runtime
+    profiles: [tts]
+    command: ["fetch-models"]
+    restart: "no"
+    healthcheck: { disable: true }
+
+  # One-shot local TTS line:  docker compose --profile tts run --rm tts "Hello there."
+  tts:
+    <<: *runtime
+    profiles: [tts]
+    entrypoint: ["/usr/bin/tini", "--", "/clyffy/scripts/clyffy.sh", "tts"]
+    command: ["We are doing this today."]
+    restart: "no"
+    healthcheck: { disable: true }
+    depends_on:
+      fetch-models: { condition: service_completed_successfully }
+
+volumes:
+  jobs:
+  out:
+  cache:
+  models:

@@ -1,0 +1,76 @@
+{
+  "verts": 48259,
+  "faces": 48133,
+  "H": 0.9425030052661896,
+  "tinted_verts": 14522,
+  "flesh_verts": 2629,
+  "attributes": [
+    "muzzle_tint",
+    "skin_flesh"
+  ],
+  "requires_color0": true,
+  "muzzle": {
+    "z_lo": 0.16118754591940068,
+    "z_hi": 0.28985716510905035,
+    "half_width": 0.09121758294483755,
+    "geodesic_cap": 0.24353631544004556
+  },
+  "skin_edge": 0.005040821897570535,
+  "pad_lower_geodesic": 0.01213864331977827,
+  "targets_srgb": {
+    "fur": [
+      162.6,
+      163.9,
+      167.3
+    ],
+    "muzzle": [
+      164.7,
+      127.1,
+      128.4
+    ]
+  },
+  "tint_multipliers": {
+    "muzzle": [
+      1.0,
+      0.557,
+      0.5443
+    ],
+    "patch": [
+      0.3236,
+      0.1893,
+      0.2278
+    ]
+  },
+  "patch": {
+    "chroma": [
+      1.47,
+      0.86,
+      1.0
+    ],
+    "ylev": 0.036,
+    "achieved_ylev": 0.036,
+    "achieved_chroma": [
+      1.445,
+      0.863,
+      1.019
+    ],
+    "verts": 6644,
+    "touched": 10084,
+    "reference": "canon/reference/ (see SPEC.md)"
+  },
+  "sss": {
+    "fur": 0.15,
+    "flesh": 0.45,
+    "radius": [
+      1.0,
+      0.35,
+      0.22
+    ],
+    "scale": 0.004
+  },
+  "roughness": {
+    "fur": 0.55,
+    "muzzle": 0.42
+  },
+  "reference": "canon/reference/ (see SPEC.md)"
+}

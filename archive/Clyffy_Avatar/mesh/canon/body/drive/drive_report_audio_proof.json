@@ -1,0 +1,16 @@
+{
+  "label": "gate_proof_tone.wav",
+  "seconds": 2.5,
+  "frames": 60,
+  "fps": 24,
+  "max_jaw_deg": 22.0,
+  "rest_hold_frames": 9,
+  "visemes_used": [
+    "E",
+    "O",
+    "aa"
+  ],
+  "contract": "control_surface v1",
+  "drive_frames": "drive_frames.jsonl",
+  "source": "gate_proof_tone.wav"
+}

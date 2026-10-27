@@ -1,0 +1,17 @@
+# NVIDIA GPU overlay (needs the NVIDIA Container Toolkit on the host):
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d
+# or put  COMPOSE_FILE=docker-compose.yml:docker-compose.gpu.yml  in .env.
+# Without this file everything renders on CPU (the default, works on any host).
+# The worker asks Cycles for $CLYFFY_GPU_DEVICE and falls back to CPU if the Blender build
+# has no kernels for the GPU (the arm64 source build currently has none; amd64 does).
+services:
+  worker:
+    environment:
+      CLYFFY_CYCLES_DEVICE: ${CLYFFY_GPU_DEVICE:-CUDA}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: ${CLYFFY_GPU_COUNT:-all}
+              capabilities: [gpu]

@@ -1,0 +1,12 @@
+{
+  "tag": "talk_aa",
+  "goggle_state": "on-face",
+  "weights": {
+    "jawOpen": 0.85,
+    "mouthFunnel": 0.15
+  },
+  "gaze": {
+    "yaw_deg": 5.0,
+    "pitch_deg": -2.0
+  }
+}

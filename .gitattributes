@@ -1,0 +1,24 @@
+# Line endings: LF everywhere, also on Windows clones (core.autocrlf=true would otherwise turn
+# scripts, env files and the path allowlist CRLF inside the Linux images). Binaries are detected.
+* text=auto eol=lf
+
+# Git LFS — binary art and models
+*.blend filter=lfs diff=lfs merge=lfs -text
+*.vrm   filter=lfs diff=lfs merge=lfs -text
+*.glb   filter=lfs diff=lfs merge=lfs -text
+*.fbx   filter=lfs diff=lfs merge=lfs -text
+*.mp4   filter=lfs diff=lfs merge=lfs -text
+# PNGs over 5 MB
+archive/Clyffy_Avatar/mesh/canon/body/clyffy_normal_pad.png filter=lfs diff=lfs merge=lfs -text
+reference/approved/modelsheet_open.png filter=lfs diff=lfs merge=lfs -text
+reference/look/turnaround_holstein_5view.png filter=lfs diff=lfs merge=lfs -text
+sheets/open/turn4_open_a.png filter=lfs diff=lfs merge=lfs -text
+sheets/turn4_a.png filter=lfs diff=lfs merge=lfs -text
+sheets/turn_4k_a.png filter=lfs diff=lfs merge=lfs -text
+sheets/turn_4k_apose.png filter=lfs diff=lfs merge=lfs -text
+sheets/turn_4k_clean.png filter=lfs diff=lfs merge=lfs -text
+
+*.sh text eol=lf
+tools/bl text eol=lf
+tools/bl-up text eol=lf
+tools/bl-tail text eol=lf

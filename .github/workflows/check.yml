@@ -1,0 +1,21 @@
+name: check
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  self-contained:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          lfs: false
+      - name: No symlinks / host paths
+        run: ./scripts/check-paths.sh .
+      - name: compose files parse
+        run: |
+          docker compose config -q
+          docker compose -f docker-compose.yml -f docker-compose.gpu.yml config -q
+      - name: shell syntax
+        run: for f in scripts/*.sh install.sh; do bash -n "$f"; done

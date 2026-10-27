@@ -1,0 +1,16 @@
+{
+  "viseme_weights": {
+    "jawOpen": 0.85,
+    "mouthUpperUpLeft": 0.9,
+    "mouthUpperUpRight": 0.9,
+    "mouthLowerDownLeft": 0.95,
+    "mouthLowerDownRight": 0.95,
+    "mouthStretchLeft": 0.2,
+    "mouthStretchRight": 0.2
+  },
+  "gaze_target": {
+    "yaw_deg": 5.0,
+    "pitch_deg": -2.0
+  },
+  "goggle_state": "on-face"
+}

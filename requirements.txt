@@ -1,0 +1,5 @@
+# Python packages installed INTO Blender's bundled Python (3.13) by the container build and
+# by install.sh. numpy is pinned to the version Blender 5.2 ships, so pip leaves it alone.
+numpy==2.2.6
+Pillow==12.3.0
+scipy==1.16.2

@@ -1,0 +1,18 @@
+{
+  "tag": "surprised",
+  "goggle_state": "pushed-up",
+  "expression": "surprised",
+  "weights": {
+    "eyeWideLeft": 0.9,
+    "eyeWideRight": 0.9,
+    "browOuterUpLeft": 0.7,
+    "browOuterUpRight": 0.7,
+    "browInnerUp": 0.5,
+    "jawOpen": 0.45,
+    "mouthFunnel": 0.25
+  },
+  "gaze": {
+    "yaw_deg": 0.0,
+    "pitch_deg": 8.0
+  }
+}

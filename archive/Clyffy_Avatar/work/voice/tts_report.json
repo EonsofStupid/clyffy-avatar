@@ -1,0 +1,52 @@
+{
+  "slot": "voice.tts",
+  "backend": "llama-tts/outetts-0.2",
+  "character": "clyffy",
+  "brief": "warm confident baritone (scaffold via en_male_1 speaker)",
+  "bin": "$LLAMA_CPP_DIR/build/bin/llama-tts",
+  "llm": "<repo>/archive/Clyffy_Avatar/work/voice/models/OuteTTS-0.2-500M-Q5_K_M.gguf",
+  "vocoder": "<repo>/archive/Clyffy_Avatar/work/voice/models/WavTokenizer-Large-75-F16.gguf",
+  "speaker": null,
+  "samples": [
+    {
+      "text": "We are doing this today.",
+      "wav": "work/voice/samples/00_we_are_doing_this_today.wav",
+      "duration_s": 1.507,
+      "elapsed_s": 1.856,
+      "bytes": 72364,
+      "speaker": null
+    },
+    {
+      "text": "Alright \u2014 here is the plan.",
+      "wav": "work/voice/samples/01_alright_here_is_the_plan.wav",
+      "duration_s": 1.6,
+      "elapsed_s": 2.031,
+      "bytes": 76844,
+      "speaker": null
+    },
+    {
+      "text": "That is the root cause. We fix it at the source.",
+      "wav": "work/voice/samples/02_that_is_the_root_cause_we_fix_it_at_the.wav",
+      "duration_s": 2.747,
+      "elapsed_s": 2.443,
+      "bytes": 131884,
+      "speaker": null
+    },
+    {
+      "text": "Hold on. I am thinking.",
+      "wav": "work/voice/samples/03_hold_on_i_am_thinking.wav",
+      "duration_s": 1.72,
+      "elapsed_s": 2.078,
+      "bytes": 82604,
+      "speaker": null
+    },
+    {
+      "text": "Done. Check the gate.",
+      "wav": "work/voice/samples/04_done_check_the_gate.wav",
+      "duration_s": 1.627,
+      "elapsed_s": 1.892,
+      "bytes": 78124,
+      "speaker": null
+    }
+  ]
+}

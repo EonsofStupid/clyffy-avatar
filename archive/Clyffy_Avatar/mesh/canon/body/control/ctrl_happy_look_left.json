@@ -1,0 +1,17 @@
+{
+  "tag": "happy_look_left",
+  "goggle_state": "on-face",
+  "expression": "happy",
+  "weights": {
+    "mouthSmileLeft": 0.85,
+    "mouthSmileRight": 0.85,
+    "cheekSquintLeft": 0.35,
+    "cheekSquintRight": 0.35,
+    "eyeSquintLeft": 0.25,
+    "eyeSquintRight": 0.25
+  },
+  "gaze": {
+    "yaw_deg": -18.0,
+    "pitch_deg": 4.0
+  }
+}

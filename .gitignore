@@ -1,0 +1,73 @@
+# ── Scratch / frame output ───────────────────────────────────────────────────
+# work/ is scratch: render frames, probes, staging. Only the live-session model and the
+# session journals are kept.
+work/*
+!work/RETOPO_clyffy.blend
+!work/bl_journal.jsonl
+!work/bl_events.jsonl
+archive/Clyffy_Avatar/work/*
+!archive/Clyffy_Avatar/work/BUILD_LOG.md
+!archive/Clyffy_Avatar/work/face_ab/
+!archive/Clyffy_Avatar/work/ref_motion/
+!archive/Clyffy_Avatar/work/voice/
+archive/Clyffy_Avatar/work/voice/*
+!archive/Clyffy_Avatar/work/voice/README.md
+!archive/Clyffy_Avatar/work/voice/SAMPLES.md
+!archive/Clyffy_Avatar/work/voice/tts_report.json
+archive/Clyffy_Avatar/work/ref_motion/src/
+
+# Render-frame dumps wherever they appear
+**/snaps/
+**/talk_v2/
+**/m7_talk*/
+**/m8_talk*/
+**/m9_talk*/
+**/frames/
+**/drive/front/
+**/talktest/front/
+**/talktest/q38/
+
+# Dead mesh experiments: README only
+mesh/_dead/*
+!mesh/_dead/README.md
+
+# ── Blender backups / old rollback scheme ────────────────────────────────────
+*.blend1
+*.blend2
+*.blend[0-9]
+*.pre-*
+*.bak
+*.bak.blend
+*.pre*.blend
+!archive/Clyffy_Avatar/mesh/canon/**/clyffy_v2_*.blend
+RETOPO_clyffy.*.blend
+
+# ── Large voice models (exceed GitHub's 100 MB hard limit) ───────────────────
+*.gguf
+
+# ── Python / Node / tooling caches ───────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.tox/
+node_modules/
+dist/
+target/
+.cache/
+
+# ── Local / personal ─────────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+.claude/
+*.log
+.DS_Store
+*.swp
+*~
+
+# render output
+out/

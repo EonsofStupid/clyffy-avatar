@@ -1,0 +1,19 @@
+{
+  "name": "@clyffy/avatar-renderer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Live VRM face renderer — adapter #1 behind drive contract v1 (three-vrm). Unreal is adapter #2; the contract is the seam.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5273",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5273"
+  },
+  "dependencies": {
+    "@pixiv/three-vrm": "3.5.5",
+    "three": "0.185.1"
+  },
+  "devDependencies": {
+    "vite": "7.3.6"
+  }
+}

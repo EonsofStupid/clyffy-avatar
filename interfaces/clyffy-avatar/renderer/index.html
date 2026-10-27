@@ -1,0 +1,48 @@
+<meta charset="utf-8" />
+<title>clyffy — live face</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #06090b; overflow: hidden; }
+  /* Desktop shell: the window is transparent, so the page must not paint anything behind
+     the avatar. The HUD and buttons are dev affordances — hidden in the companion. */
+  body.transparent, body.transparent #stage { background: transparent !important; }
+  body.transparent #hud, body.transparent #bar { display: none; }
+  #stage { position: fixed; inset: 0; }
+  #hud {
+    position: fixed; left: 12px; bottom: 12px; z-index: 10;
+    font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: #7fd8d0; background: rgba(4,10,12,.72);
+    border: 1px solid rgba(127,216,208,.22); border-radius: 6px;
+    padding: 8px 10px; min-width: 250px;
+  }
+  #hud b { color: #eaf6f5; font-weight: 600; }
+  #hud .row { display: flex; justify-content: space-between; gap: 14px; }
+  #hud .warn { color: #ffb35c; }
+  button {
+    font: inherit; color: #eaf6f5; background: #12333a;
+    border: 1px solid rgba(127,216,208,.35); border-radius: 5px;
+    padding: 5px 10px; cursor: pointer; margin-right: 6px;
+  }
+  button:hover { background: #17434c; }
+  #bar { position: fixed; left: 12px; top: 12px; z-index: 10; }
+  #env { height: 4px; background: #7fd8d0; width: 0; border-radius: 2px; transition: width .04s linear; }
+</style>
+
+<div id="stage"></div>
+<div id="bar">
+  <button id="play">▶ speak (sample)</button>
+  <button id="framing">framing: waist-up</button>
+</div>
+<div id="hud">
+  <div class="row"><span>state</span><b id="s-state">booting</b></div>
+  <div class="row"><span>viseme</span><b id="s-vis">—</b></div>
+  <div class="row"><span>env</span><b id="s-env">0.00</b></div>
+  <div class="row"><span>jawOpen</span><b id="s-jaw">0.00</b></div>
+  <div class="row"><span>fps</span><b id="s-fps">—</b></div>
+  <div class="row"><span>daemon</span><b id="s-link">connecting…</b></div>
+  <div class="row"><span>expression</span><b id="s-expr">—</b></div>
+  <div class="row"><span>goggles</span><b id="s-goggles">—</b></div>
+  <div id="env" ></div>
+  <div class="row" id="s-warn"></div>
+</div>
+<script type="module" src="/src/main.js"></script>

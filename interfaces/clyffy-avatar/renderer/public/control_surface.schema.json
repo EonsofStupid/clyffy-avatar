@@ -1,0 +1,446 @@
+{
+  "schema": {
+    "version": 1,
+    "description": "Companion-app \u2192 Clyffy avatar control surface (alpha)",
+    "inputs": {
+      "gaze_target": {
+        "oneOf": [
+          {
+            "type": "object",
+            "props": {
+              "yaw_deg": "float",
+              "pitch_deg": "float"
+            },
+            "note": "degrees; +yaw = character's left, +pitch = up"
+          },
+          {
+            "type": "object",
+            "props": {
+              "x": "float",
+              "y": "float",
+              "z": "float"
+            },
+            "note": "world-space look-at point (local==world on canonical mesh)"
+          }
+        ],
+        "default": {
+          "yaw_deg": 0.0,
+          "pitch_deg": 0.0
+        }
+      },
+      "viseme_weights": {
+        "type": "object",
+        "keys": "ARKit shape key names (mouth*/jaw* except jawOpen) \u2192 0..1",
+        "special": {
+          "jawOpen": "0..1 \u2192 jaw BONE rotation (max 22 deg), NOT a shape key"
+        }
+      },
+      "expression_state": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "rest",
+              "happy",
+              "sad",
+              "angry",
+              "surprised",
+              "thinking",
+              "talk"
+            ]
+          },
+          {
+            "type": "object",
+            "keys": "ARKit shape key names \u2192 0..1"
+          }
+        ]
+      },
+      "goggle_state": {
+        "type": "string",
+        "enum": [
+          "on-face",
+          "pushed-up",
+          "resting-on-desk",
+          "in-hand"
+        ],
+        "alpha": "logged only \u2014 goggle mesh prop not yet authored"
+      },
+      "rest_loop": {
+        "type": "boolean",
+        "note": "true zeros all drives (rest-state law)"
+      }
+    }
+  },
+  "presets": {
+    "rest": {},
+    "happy": {
+      "mouthSmileLeft": 0.85,
+      "mouthSmileRight": 0.85,
+      "cheekSquintLeft": 0.35,
+      "cheekSquintRight": 0.35,
+      "eyeSquintLeft": 0.25,
+      "eyeSquintRight": 0.25
+    },
+    "sad": {
+      "mouthFrownLeft": 0.7,
+      "mouthFrownRight": 0.7,
+      "browInnerUp": 0.55,
+      "browDownLeft": 0.2,
+      "browDownRight": 0.2,
+      "eyeBlinkLeft": 0.15,
+      "eyeBlinkRight": 0.15
+    },
+    "angry": {
+      "browDownLeft": 0.9,
+      "browDownRight": 0.9,
+      "mouthFrownLeft": 0.4,
+      "mouthFrownRight": 0.4,
+      "noseSneerLeft": 0.45,
+      "noseSneerRight": 0.45,
+      "eyeSquintLeft": 0.4,
+      "eyeSquintRight": 0.4
+    },
+    "surprised": {
+      "eyeWideLeft": 0.9,
+      "eyeWideRight": 0.9,
+      "browOuterUpLeft": 0.7,
+      "browOuterUpRight": 0.7,
+      "browInnerUp": 0.5,
+      "jawOpen": 0.45,
+      "mouthFunnel": 0.25
+    },
+    "thinking": {
+      "browInnerUp": 0.4,
+      "browDownLeft": 0.35,
+      "mouthPressLeft": 0.3,
+      "mouthPressRight": 0.3,
+      "eyeSquintLeft": 0.2
+    },
+    "talk": {
+      "jawOpen": 0.35,
+      "mouthClose": 0.1
+    }
+  },
+  "visemes": {
+    "sil": {},
+    "PP": {
+      "jawOpen": 0.0,
+      "mouthPressLeft": 0.6,
+      "mouthPressRight": 0.6,
+      "mouthRollUpper": 0.15,
+      "mouthRollLower": 0.25,
+      "mouthClose": 0.5
+    },
+    "FF": {
+      "jawOpen": 0.08,
+      "lipTuckLower": 0.85,
+      "mouthRollLower": 0.25,
+      "mouthUpperUpLeft": 0.3,
+      "mouthUpperUpRight": 0.3,
+      "mouthPressLeft": 0.2,
+      "mouthPressRight": 0.2
+    },
+    "TH": {
+      "jawOpen": 0.22,
+      "tongueOut": 0.3,
+      "tongueUp": 0.35,
+      "mouthShrugLower": 0.2,
+      "mouthLowerDownLeft": 0.3,
+      "mouthLowerDownRight": 0.3
+    },
+    "DD": {
+      "jawOpen": 0.3,
+      "tongueUp": 0.9,
+      "mouthStretchLeft": 0.15,
+      "mouthStretchRight": 0.15,
+      "mouthLowerDownLeft": 0.2,
+      "mouthLowerDownRight": 0.2
+    },
+    "kk": {
+      "jawOpen": 0.38,
+      "tongueBack": 0.9,
+      "mouthStretchLeft": 0.2,
+      "mouthStretchRight": 0.2,
+      "mouthUpperUpLeft": 0.15,
+      "mouthUpperUpRight": 0.15
+    },
+    "CH": {
+      "jawOpen": 0.22,
+      "tongueCurl": 0.85,
+      "mouthFunnel": 0.45,
+      "mouthPucker": 0.25,
+      "jawForward": 0.4
+    },
+    "SS": {
+      "jawOpen": 0.08,
+      "tongueUp": 0.7,
+      "mouthStretchLeft": 0.9,
+      "mouthStretchRight": 0.9,
+      "mouthDimpleLeft": 0.45,
+      "mouthDimpleRight": 0.45,
+      "mouthSmileLeft": 0.25,
+      "mouthSmileRight": 0.25,
+      "mouthPressLeft": 0.15,
+      "mouthPressRight": 0.15
+    },
+    "nn": {
+      "jawOpen": 0.14,
+      "tongueUp": 0.9,
+      "mouthClose": 0.25,
+      "mouthShrugLower": 0.15
+    },
+    "RR": {
+      "jawOpen": 0.28,
+      "tongueCurl": 0.5,
+      "tongueBack": 0.45,
+      "mouthFunnel": 0.3,
+      "mouthPucker": 0.2,
+      "jawForward": 0.25
+    },
+    "aa": {
+      "jawOpen": 0.85,
+      "mouthUpperUpLeft": 0.9,
+      "mouthUpperUpRight": 0.9,
+      "mouthLowerDownLeft": 0.95,
+      "mouthLowerDownRight": 0.95,
+      "mouthStretchLeft": 0.2,
+      "mouthStretchRight": 0.2
+    },
+    "E": {
+      "jawOpen": 0.42,
+      "mouthStretchLeft": 0.45,
+      "mouthStretchRight": 0.45,
+      "mouthSmileLeft": 0.3,
+      "mouthSmileRight": 0.3,
+      "mouthDimpleLeft": 0.2,
+      "mouthDimpleRight": 0.2,
+      "mouthLowerDownLeft": 0.5,
+      "mouthLowerDownRight": 0.5
+    },
+    "I": {
+      "jawOpen": 0.24,
+      "mouthStretchLeft": 0.6,
+      "mouthStretchRight": 0.6,
+      "mouthSmileLeft": 0.4,
+      "mouthSmileRight": 0.4,
+      "mouthDimpleLeft": 0.3,
+      "mouthDimpleRight": 0.3
+    },
+    "O": {
+      "jawOpen": 0.55,
+      "mouthFunnel": 0.7,
+      "mouthPucker": 0.25,
+      "mouthShrugUpper": 0.25,
+      "mouthShrugLower": 0.25,
+      "jawForward": 0.15
+    },
+    "U": {
+      "jawOpen": 0.3,
+      "mouthPucker": 0.8,
+      "mouthFunnel": 0.35,
+      "mouthShrugUpper": 0.3,
+      "mouthShrugLower": 0.3,
+      "jawForward": 0.2
+    }
+  },
+  "envelope": {
+    "sample_rate": 16000,
+    "fps": 24,
+    "rms_gamma": 0.6,
+    "smooth_kernel": [
+      0.15,
+      0.7,
+      0.15
+    ],
+    "rest_hold_s": 0.4,
+    "classes": [
+      {
+        "max": 0.08,
+        "viseme": "sil"
+      },
+      {
+        "max": 0.25,
+        "viseme": "nn"
+      },
+      {
+        "max": 0.45,
+        "viseme": "E"
+      },
+      {
+        "max": 0.65,
+        "viseme": "O"
+      },
+      {
+        "max": 1.01,
+        "viseme": "aa"
+      }
+    ],
+    "coartic": {
+      "attack_s": 0.045,
+      "release_s": 0.075,
+      "carry": 0.28
+    },
+    "jaw": {
+      "max_deg": 10.0,
+      "scale_base": 0.35,
+      "scale_env": 0.65,
+      "env_floor": 0.15
+    },
+    "weight_scale": {
+      "base": 0.4,
+      "env": 0.6
+    }
+  },
+  "idle": {
+    "target": {
+      "crown_x_rms_bodyheights": 0.0168,
+      "crown_y_rms_bodyheights": 0.0101,
+      "dominant_hz": {
+        "x": 0.375,
+        "y": 0.25
+      },
+      "source": "6f675283 quietest 2s windows; work/ref_motion/REFERENCE_SHEET.md",
+      "tolerance": 0.25
+    },
+    "sway": {
+      "spine_roll_deg": [
+        [
+          0.0,
+          0.19,
+          0.0
+        ]
+      ],
+      "spine_pitch_deg": [
+        [
+          0.0,
+          0.157,
+          3.4
+        ]
+      ],
+      "hips_roll_deg": [
+        [
+          0.0,
+          0.19,
+          0.35
+        ]
+      ]
+    },
+    "head": {
+      "yaw_deg": [
+        [
+          1.1,
+          0.173,
+          0.9
+        ],
+        [
+          0.45,
+          0.389,
+          2.6
+        ]
+      ],
+      "pitch_deg": [
+        [
+          0.55,
+          0.211,
+          4.3
+        ],
+        [
+          0.22,
+          0.443,
+          6.0
+        ]
+      ],
+      "roll_deg": [
+        [
+          0.6,
+          0.229,
+          1.2
+        ],
+        [
+          0.25,
+          0.371,
+          3.8
+        ]
+      ]
+    },
+    "bob": {
+      "hips_rise_bodyheights": [
+        [
+          0.0,
+          0.23,
+          0.0
+        ]
+      ]
+    },
+    "breath": {
+      "hz": 0.23,
+      "chest_pitch_deg": 0.35,
+      "phase": 0.0
+    }
+  },
+  "grapheme_visemes": {
+    "digraphs": {
+      "ch": "CH",
+      "sh": "CH",
+      "th": "TH",
+      "ph": "FF",
+      "wh": "U",
+      "ng": "nn",
+      "ck": "kk",
+      "qu": "kk",
+      "oo": "U",
+      "ee": "I",
+      "ou": "O",
+      "ow": "O",
+      "ai": "E",
+      "ay": "E",
+      "oa": "O",
+      "ea": "I"
+    },
+    "single": {
+      "p": "PP",
+      "b": "PP",
+      "m": "PP",
+      "f": "FF",
+      "v": "FF",
+      "t": "DD",
+      "d": "DD",
+      "l": "DD",
+      "k": "kk",
+      "g": "kk",
+      "c": "kk",
+      "x": "kk",
+      "q": "kk",
+      "j": "CH",
+      "s": "SS",
+      "z": "SS",
+      "n": "nn",
+      "r": "RR",
+      "a": "aa",
+      "e": "E",
+      "i": "I",
+      "o": "O",
+      "u": "U",
+      "y": "I",
+      "w": "U",
+      "h": "aa"
+    },
+    "durations": {
+      "aa": 2.0,
+      "E": 1.8,
+      "I": 1.6,
+      "O": 1.9,
+      "U": 1.7,
+      "PP": 0.7,
+      "FF": 0.9,
+      "TH": 0.9,
+      "DD": 0.7,
+      "kk": 0.7,
+      "CH": 1.0,
+      "SS": 1.1,
+      "nn": 0.9,
+      "RR": 1.0,
+      "sil": 1.0
+    }
+  }
+}
